@@ -7,7 +7,8 @@ Cписок задач:
 1. Загрузить файл "Input.csv" и "TypeInfos.json" 
 2.  Выполнить для каждой строки из Input.csv соединение с TypeInfos.json по типу.
 
-**Пример: **
+**Пример:**
+
 Для строки: root.SSN1.ZRP1.IL2.ZD1 указан тип ZD.
 должно получиться:
 
@@ -22,7 +23,7 @@ Cписок задач:
 | root.SSN1.ZRP1.IL2.ZD1.Time12_in | offset |
 | root.SSN1.ZRP1.IL2.ZD1.Time13_in | offset |
 
-где offset - это смещение от предыдушего на размер тип данных
+где *offset* - это смещение от предыдушего на размер тип данных
 
 | teg | offset |
 | ------ | ------ |
@@ -33,13 +34,13 @@ Cписок задач:
 
 
 3.  Сохранить полученые значение в формате XML по шаблону.
-  
+
 
 ```
 <item Binding="Introduced">
     <node-path>root.SSN1.ZRP1.IL2.ZD1.Time03</node-path>
     <address>20</address>
-  </item>
+</item>
 ```
 
 

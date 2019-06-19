@@ -24,10 +24,12 @@ Cписок задач:
 
 где offset - это смещение от предыдушего на размер тип данных
 
-root.SSN1.ZRP1.IL2.ZD1.Cmd; 0
-root.SSN1.ZRP1.IL2.ZD1.Time01; 4
-root.SSN1.ZRP1.IL2.ZD1.Time02; 12
-root.SSN1.ZRP1.IL2.ZD1.Time03; 20
+| teg | offset |
+| ------ | ------ |
+| root.SSN1.ZRP1.IL2.ZD1.Cmd | 0 |
+| root.SSN1.ZRP1.IL2.ZD1.Time01 | 4 |
+| root.SSN1.ZRP1.IL2.ZD1.Time02 | 12 |
+| root.SSN1.ZRP1.IL2.ZD1.Time03 | 20 |
 
 
 3.  Сохранить полученые значение в формате XML по шаблону.

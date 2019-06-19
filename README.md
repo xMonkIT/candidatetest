@@ -12,7 +12,7 @@ Cписок задач:
 Для строки: root.SSN1.ZRP1.IL2.ZD1 указан тип ZD.
 должно получиться:
 
-| teg | offset |
+| tag | offset |
 | ------ | ------ |
 | root.SSN1.ZRP1.IL2.ZD1.Cmd | offset |
 | root.SSN1.ZRP1.IL2.ZD1.Time01 | offset |
@@ -25,7 +25,7 @@ Cписок задач:
 
 где *offset* - это смещение от предыдушего на размер тип данных
 
-| teg | offset |
+| tag | offset |
 | ------ | ------ |
 | root.SSN1.ZRP1.IL2.ZD1.Cmd | 0 |
 | root.SSN1.ZRP1.IL2.ZD1.Time01 | 4 |
@@ -38,8 +38,8 @@ Cписок задач:
 
 ```xml
 <item Binding="Introduced">
-    <node-path>root.SSN1.ZRP1.IL2.ZD1.Time03</node-path>
-    <address>20</address>
+    <node-path>{{ tag }}</node-path>
+    <address>{{ offset }}</address>
 </item>
 ```
 

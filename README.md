@@ -36,7 +36,7 @@ Cписок задач:
 3.  Сохранить полученые значение в формате XML по шаблону.
 
 
-```
+```xml
 <item Binding="Introduced">
     <node-path>root.SSN1.ZRP1.IL2.ZD1.Time03</node-path>
     <address>20</address>

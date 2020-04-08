@@ -13,7 +13,7 @@ namespace TestTaskTransneft
     /// </summary>
     public partial class MainWindow
     {
-        public static List<CsvFileItem> csvFile = new List<CsvFileItem>();
+        public static List<CsvFileItem> csvFile = new List<CsvFileItem>(); // TODO: не рекомендуется использование static переменных
         
         private JsonFileItem _jsonFile = new JsonFileItem();
         private List<XmlFileItem> _xmlFile = new List<XmlFileItem>();
@@ -35,21 +35,22 @@ namespace TestTaskTransneft
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = false;
             openFileDialog.Filter = ".csv files|*.csv|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // TODO: рекомендуется убрать, для сохранения ранее выбранной директории
             if (openFileDialog.ShowDialog() == true)
             {
-                foreach (string filename in openFileDialog.FileNames) 
+                foreach (string filename in openFileDialog.FileNames) // TODO: требуется пояснение использования FileNames при Multiselect == false
                     csvPath.Text = Path.GetFullPath(filename);
             }
 
             try
             {
-                ReadCsv(csvPath.Text);
+                ReadCsv(csvPath.Text); // TODO: требуется пояснить необходимость чтения файла при отрицательном результате открытия диалогового окна
             }
             catch (Exception exception)
             {
+                // TODO: зайдет ли код в эту ветку, только при некорректной структуре файла?
                 MessageBox.Show("Неправильная структура файла (Должно быть: Tag;Type;Address)", "Ошибка чтения .csv");
-                throw;
+                throw; // TODO: требуется пояснить логику работы приложения в исключительных ситуациях
             }
             
         }
@@ -64,22 +65,24 @@ namespace TestTaskTransneft
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = false;
             openFileDialog.Filter = ".json files|*.json|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // TODO: рекомендуется убрать, для сохранения ранее выбранной директории
             if (openFileDialog.ShowDialog() == true)
             {
-                foreach (string filename in openFileDialog.FileNames)
+                foreach (string filename in openFileDialog.FileNames) // TODO: требуется пояснение использования FileNames при Multiselect == false
                     jsonPath.Text = Path.GetFullPath(filename);
             }
 
             try
             {
-                ReadJson();
+                // TODO: при открытии вылетает ошибка, о некорректном пути, при этом предварительно выдается сообщение о неправильной структуре файла
+                ReadJson(); // TODO: требуется пояснить необходимость чтения файла при отрицательном результате открытия диалогового окна
             }
             catch (Exception exception)
             {
+                // TODO: зайдет ли код в эту ветку, только при некорректной структуре файла?
                 MessageBox.Show("Неправильная структура файла (Должно быть {\"TypeInfos\":[{\"TypeName\": \"ZRP\",\"Propertys\": {\"flowkD\": " +
                                 "\"double\"}},{\"TypeName\": \"AI\",\"Propertys\": {\"Cmd\": \"double\"}}]}", "Ошибка чтения .json");
-                throw;
+                throw; // TODO: требуется пояснить логику работы приложения в исключительных ситуациях
             }
         }
         
@@ -99,10 +102,10 @@ namespace TestTaskTransneft
                 catch (Exception exception)
                 {
                     MessageBox.Show("Неправильная структура файлов", "Ошибка");
-                    throw;
+                    throw; // TODO: требуется пояснить логику работы приложения в исключительных ситуациях
                 }
                 SaveXML(PathToXml(), _xmlFile);
-                Close();
+                Close(); // TODO: требуется пояснение необходимости выхода из программы после генерации
             }
             else
             {
@@ -170,7 +173,9 @@ namespace TestTaskTransneft
                         
                         int[] value = new int[tempValue.Length];
                         
+                        // TODO: требуется пояснить нобходимость передачи массива с использованием ref
                         ReformStringToByte(tempValue,ref value);
+                        // TODO: сквозная нумерация сбрасывается для каждой строки из csv файла, а должна проходить через весь xml
                         CalcAmount(ref value);
                         
                         XmlFileItem xmlFileItem = new XmlFileItem();
@@ -229,6 +234,8 @@ namespace TestTaskTransneft
         /// <param name="list">Лист всех словарей содержащих конечные значения для вывода</param>
         private void SaveXML(string path, List<XmlFileItem> list)
         {
+            // TODO: привести xml к соответствию result.xml
+
             var doc = new XmlDocument();
 
             //var XmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -268,7 +275,7 @@ namespace TestTaskTransneft
         {
             string path = string.Empty;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // TODO: рекомендуется убрать, для сохранения ранее выбранной директории
             saveFileDialog.FileName = "Output";
             saveFileDialog.DefaultExt = ".xml";
             if (saveFileDialog.ShowDialog() == true)

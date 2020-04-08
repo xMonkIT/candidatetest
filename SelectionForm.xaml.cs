@@ -40,6 +40,8 @@ namespace TestTaskTransneft
 
         public void Apply_OnClick(object sender, RoutedEventArgs e)
         {
+            // TODO: выбор элементов через удаление ненужных - не лучшее решение
+            // может возникнуть необходимость генерации двух файлов, с небольшими отличиями в выбранных тегах
             MainWindow.csvFile.Clear();
             for (int i = 0; i < _list.Count; i++)
             {
